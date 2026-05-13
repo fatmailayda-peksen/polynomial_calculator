@@ -6,7 +6,7 @@ class Polynomial
     int exponent;
     int *term;
     public:
-    Polynomial(int e): exponent(e)
+    Polynomial(int e): exponent(e) //constructor func.
     {
         term = new int [exponent+1];
         for(int i=0; i<=exponent; i++)
@@ -14,11 +14,11 @@ class Polynomial
             term[i]=0;
         }
     }
-    ~Polynomial()
+    ~Polynomial() //destructor func.
     {
         delete [] term;
     }
-    Polynomial operator+(const Polynomial &p1)
+    Polynomial operator+(const Polynomial &p1) //+ operator overloading
     {
             int maxdeg=max(this->exponent,p1.exponent);
             Polynomial result(maxdeg);
@@ -34,7 +34,7 @@ class Polynomial
             }
             return result;
     }
-    friend ostream& operator<<(ostream& os, Polynomial &p1)
+    friend ostream& operator<<(ostream& os, Polynomial &p1) //operator overloading
     {
         bool printed=true;
         for (int i=p1.exponent; i>=0; i--)
@@ -55,7 +55,7 @@ class Polynomial
           os<<0;
         return os;
     }
-friend istream& operator>>(istream& is, Polynomial &p1)
+friend istream& operator>>(istream& is, Polynomial &p1) //operator overloading
     {
         for(int i=0;i<=p1.exponent; i++)
         {
@@ -81,4 +81,4 @@ int main()
     Polynomial sum = p1+ p2;
     cout<<"The sum of "<<p1<<"+"<<p2<<"="<<sum;
     return 0;
-}
+} //Will develop in progress..
